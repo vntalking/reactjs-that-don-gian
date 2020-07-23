@@ -1,30 +1,32 @@
 import React from "react";
+// import Todos from "./Todos";
+import Header from "../components/layout/Header";
+
 class TodoApp extends React.Component {
-    state = {
-        todos: [
-            {
-                id: 1,
-                title: "Setup development environment",
-                completed: true
-            },
-            {
-                id: 2,
-                title: "Develop website and add content",
-                completed: false
-            },
-            {
-                id: 3,
-                title: "Deploy to live server",
-                completed: false
-            }
-        ]
-    };
+    // state = {
+    //     todos: [
+    //         {
+    //             id: 1,
+    //             title: "Setup development environment",
+    //             completed: true
+    //         },
+    //         {
+    //             id: 2,
+    //             title: "Develop website and add content",
+    //             completed: false
+    //         },
+    //         {
+    //             id: 3,
+    //             title: "Deploy to live server",
+    //             completed: false
+    //         }
+    //     ]
+    // };
     render() {
         return (
             <div>
-                {this.state.todos.map((todo, i) => (
-                    <li key={todo.id}>{todo.title}</li>
-                ))}
+                <Header/>
+                {/* <Todos todos={this.state.todos} /> */}
             </div>
         );
     }
