@@ -22,8 +22,9 @@ class TodoApp extends React.Component {
     render() {
         return (
             <div>
-                <h1>Hello from VNTALKING</h1>
-                <p>I am in a React Component!</p>
+                {this.state.todos.map((todo, i) => (
+                    <li key={todo.id}>{todo.title}</li>
+                ))}
             </div>
         );
     }
