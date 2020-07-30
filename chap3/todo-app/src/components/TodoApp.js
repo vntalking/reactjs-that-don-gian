@@ -2,7 +2,7 @@ import React from "react";
 import Todos from "./Todos";
 import Header from "../components/layout/Header";
 import AddTodo from "./AddTodo"
-import uuid from "uuid";
+
 //khai bao thu vien axios
 import axios from "axios";
 
@@ -21,24 +21,28 @@ class TodoApp extends React.Component {
         });
     };
     deleteTodo = id => {
-        this.setState({
-            todos: [
-                ...this.state.todos.filter(todo => {
-                    return todo.id !== id;
-                })
-            ]
-        });
+        axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+            .then(reponse => this.setState({
+                todos: [
+                    ...this.state.todos.filter(todo => {
+                        return todo.id !== id;
+                    })
+                ]
+            }))
     };
 
     addTodo = title => {
-        const newTodo = {
-            id: uuid.v4(),
+        const todoData = {
             title: title,
             completed: false
-        };
-        this.setState({
-            todos: [...this.state.todos, newTodo]
-        });
+        }
+        axios.post("https://jsonplaceholder.typicode.com/todos", todoData)
+            .then(response => {
+                console.log(response.data)
+                this.setState({
+                    todos: [...this.state.todos, response.data]
+                })
+            });
     };
 
 
@@ -51,7 +55,7 @@ class TodoApp extends React.Component {
         }
         //tao GET request de lay danh sach todos
         axios.get("https://jsonplaceholder.typicode.com/todos", config)
-        .then(response => this.setState({ todos: response.data }));
+            .then(response => this.setState({ todos: response.data }));
     }
 
     render() {
