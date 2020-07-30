@@ -24,7 +24,7 @@ body {
 }
 
 .container {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     border: 1px solid #678c89;
 }
@@ -34,6 +34,16 @@ body {
     padding: 10px 15px;
     border-top: 1px solid #678c89;
 }
+
+.todo-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
+    height: 18px;
+    display: inline-block;
+}
+
 .todo-item input {
     margin-right: 15px;
 }

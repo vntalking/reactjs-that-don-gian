@@ -3,26 +3,12 @@ import Todos from "./Todos";
 import Header from "../components/layout/Header";
 import AddTodo from "./AddTodo"
 import uuid from "uuid";
+//khai bao thu vien axios
+import axios from "axios";
 
 class TodoApp extends React.Component {
     state = {
-        todos: [
-            {
-                id: uuid.v4(),
-                title: "Setup development environment",
-                completed: true
-            },
-            {
-                id: uuid.v4(),
-                title: "Develop website and add content",
-                completed: false
-            },
-            {
-                id: uuid.v4(),
-                title: "Deploy to live server",
-                completed: false
-            }
-        ]
+        todos: []
     };
     handleCheckboxChange = id => {
         this.setState({
@@ -54,6 +40,19 @@ class TodoApp extends React.Component {
             todos: [...this.state.todos, newTodo]
         });
     };
+
+
+    componentDidMount() {
+        const config = {
+            params: {
+                _limit: 5
+            }
+
+        }
+        //tao GET request de lay danh sach todos
+        axios.get("https://jsonplaceholder.typicode.com/todos", config)
+        .then(response => this.setState({ todos: response.data }));
+    }
 
     render() {
         return (
