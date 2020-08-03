@@ -19,7 +19,7 @@ class Footer extends React.Component {
         }
     };
 
-    UNSAFE_componentWillReceiveProps(nextprops){
+    componentWillReceiveProps(nextprops){
         console.log('UNSAFE_componentWillReceiveProps: ' +JSON.stringify(nextprops))
         document
             .documentElement
