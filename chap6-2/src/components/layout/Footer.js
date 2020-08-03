@@ -9,13 +9,13 @@ class Footer extends React.Component {
     constructor(props){
         super(props)
 
-        this.handleChangeTheme = this.handleChangeTheme.bind(this)
+        this.submitThemeColor = this.submitThemeColor.bind(this)
     }
 
-    handleChangeTheme(color) {
+    submitThemeColor(color) {
         if (color) {
             console.log('handleChangeTheme')
-            this.props.changeColorTheme(color);
+            this.props.saveColorTheme(color);
         }
     };
 
@@ -31,9 +31,9 @@ class Footer extends React.Component {
             <div className="footer">
                 <div className="vertical-center">
                     <span>Choose Theme </span>
-                    <button onClick={() => this.handleChangeTheme(RED)} className="dot red" />
-                    <button onClick={() => this.handleChangeTheme(BLUE)} className="dot blue" />
-                    <button onClick={() => this.handleChangeTheme(GRAY)} className="dot gray" />
+                    <button onClick={() => this.submitThemeColor(RED)} className="dot red" />
+                    <button onClick={() => this.submitThemeColor(BLUE)} className="dot blue" />
+                    <button onClick={() => this.submitThemeColor(GRAY)} className="dot gray" />
                 </div>
             </div>
         );
